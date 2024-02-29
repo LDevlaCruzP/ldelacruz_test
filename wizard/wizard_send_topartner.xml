@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- View wizard.send.topartner form -->
+        <record id="view_wizard_send_topartner_form" model="ir.ui.view">
+            <field name="name">view.wizard.send.topartner.form</field>
+            <field name="model">wizard.send.topartner</field>
+            <field name="arch" type="xml">
+                <form string="Wizard Send Topartner">
+                    <!-- style scss  -->
+                    <style>
+                        .o_my_attachments {
+
+                            .o_attachments {
+                                max-height: 300px !important;
+                                overflow: auto;
+                                display: flex;
+                                flex-wrap: wrap;
+                                
+                                .o_attachment {
+                                    width: auto;
+                                }
+                            }
+                        }
+                    </style>
+                    <div class="alert border border-primary bg-secondary mt-2">
+                        Asegurese de tener configurado su servidor de correo saliente
+                    </div>
+                    <group>
+                        <field name="picking_id" readonly="1" force_save="1" invisible="1"/>
+                        <field name="note" readonly="1" force_save="1"/>
+                    </group>
+                    <div class="alert border border-primary bg-secondary mt-2">
+                            Sólo puedes cargar imagenes y pdf
+                    </div>
+                    <group>
+                        <div colspan="2">
+                            <field name="file_attachment_ids" class="o_my_attachments" widget="many2many_binary" force_save="1"
+                                nolabel="1" options="{'accepted_file_extensions': '.pdf,image/*'}"/>
+                        </div>
+                    </group>
+
+                    <footer>
+                        <button name="action_send" type="object" string="Enviar" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action wizard.send.topartner -->
+        <record id="action_wizard_send_topartner" model="ir.actions.act_window">
+            <field name="name">Wizard Send Topartner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.send.topartner</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

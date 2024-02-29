@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ld_view_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">ld.view.res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority">200</field>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <field name="invoice_due_ids" invisible="1"/>
+                    <button type="object" class="oe_stat_button" name="action_view_partner_invoices_due" context="{'default_partner_id': id}"
+                        invisible="invoice_due_count == 0">
+                        <div class="o_stat_info d-flex flex-row">
+                            <!-- <span class="o_stat_text"><field name="invoice_due_count" class="mx-2" />Facturas vencidas</span> -->
+                            <field name="invoice_due_count" class="mx-2" />Facturas vencidas
+                        </div>
+
+
+
+                        <!-- <div class="o_form_field o_stat_info"> -->
+                        <!-- <span class="o_stat_value"> -->
+                        <!-- <field name="invoice_due_count" invisible="0" string="Facturas vv" widget="statinfo"/> -->
+                        <!-- <span class="o_stat_text mx-2">Facturas vencidas</span> -->
+                        <!-- </span> -->
+                        <!-- <span class="o_stat_text">Facturas vencidas</span> -->
+                        <!-- </div> -->
+                    </button>
+                </div>
+
+                <!-- <group name="sales_purchases" position="inside">
+                    <field name="invoice_due_ids" />
+                </group> -->
+            </field>
+        </record>
+
+    </data>
+</odoo>

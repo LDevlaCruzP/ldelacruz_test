@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View new.report.stock.quant View Tree -->
+    <record id="view_new_report_stock_quant_tree" model="ir.ui.view">
+        <field name="name">view.new.report.stock.quant.tree</field>
+        <field name="model">new.report.stock.quant</field>
+        <field name="arch" type="xml">
+            <tree string="New Report Stock Quant">
+                <field name="warehouse_id"/>
+                <field name="location_id"/>
+                <field name="product_id"/>
+                <field name="category_id"/>
+                <field name="uom_id"/>
+                <field name="stock_quantity_availability"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View new.report.stock.quant search -->
+    <record id="view_new_report_stock_quant_search" model="ir.ui.view">
+        <field name="name">view.new.report.stock.quant.search</field>
+        <field name="model">new.report.stock.quant</field>
+        <field name="arch" type="xml">
+            <search string="New Report Stock Quant">
+                <group expand="1" string="Group By">
+                    <filter string="Almacen" name="warehouse_id" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_new_report_stock_quant_pivot" model="ir.ui.view">
+        <field name="name">view.new.report.stock.quant.pivot</field>
+        <field name="model">new.report.stock.quant</field>
+        <field name="arch" type="xml">
+            <pivot string="Pivot New Report Stock quant" disable_linking="true" >
+                <field name="product_id" type="row"/>
+                <field name="warehouse_id" type="col"/>
+                <field name="location_id" type="col"/>
+                <field name="stock_quantity_availability" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+
+
+    <!-- Action new.report.stock.quant -->
+    <record id="action_new_report_stock_quant" model="ir.actions.act_window">
+        <field name="name">New Report Stock Quant</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">new.report.stock.quant</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Sin registros
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        action="action_new_report_stock_quant"
+        id="new_report_stock_quant_menu"
+        parent="stock.menu_warehouse_report" sequence="210"/>
+</odoo>
